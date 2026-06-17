@@ -1,0 +1,198 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800;900&display=swap');
+
+body{
+	font-family: 'Poppins', sans-serif;
+	background: #FFFFFF;
+}
+
+h1{
+	text-align: center;
+	/*ketebalan font*/
+	font-weight: 600;
+	color: #1E3A8A;
+}
+
+.tulisan_login{
+	text-align: center;
+	/*membuat semua huruf menjadi kapital*/
+	text-transform: uppercase;
+	color: #1E3A8A;
+	font-weight: 600;
+}
+
+.tulisan_registrasi{
+	text-align: center;
+	/*membuat semua huruf menjadi kapital*/
+	text-transform: uppercase;
+	color: #1E3A8A;
+	font-weight: 600;
+}
+
+.kotak_login{
+	width: 350px;
+	background: white;
+	/*meletakkan form ke tengah*/
+	margin: 80px auto;
+	padding: 30px 20px;
+	box-shadow: 0px 0px 20px rgba(30, 58, 138, 0.15);
+	border-radius: 10px;
+	border: 1px solid #E8E8E8;
+}
+
+.kotak_registrasi{
+	width: 350px;
+	background: white;
+	/*meletakkan form ke tengah*/
+	margin: 80px auto;
+	padding: 30px 20px;
+	box-shadow: 0px 0px 20px rgba(30, 58, 138, 0.15);
+	border-radius: 10px;
+	border: 1px solid #E8E8E8;
+}
+
+label{
+	font-size: 11pt;
+	color: #1E3A8A;
+	font-weight: 500;
+	font-family: 'Poppins', sans-serif;
+}
+
+.form_login{
+	/*membuat lebar form penuh*/
+	box-sizing : border-box;
+	width: 100%;
+	padding: 12px;
+	font-size: 11pt;
+	margin-bottom: 20px;
+	border: 1px solid #1E3A8A;
+	border-radius: 6px;
+	font-family: 'Poppins', sans-serif;
+	transition: all 0.3s ease;
+	background-color: #FFFFFF;
+}
+
+.form_login:focus{
+	outline: none;
+	border-color: #152a5a;
+	box-shadow: 0 0 8px rgba(30, 58, 138, 0.2);
+	background-color: #FFFFFF;
+}
+
+.form_edit{
+	/*membuat lebar form penuh*/
+	box-sizing : border-box;
+	width: 35%;
+	padding: 12px;
+	font-size: 11pt;
+	margin-bottom: 20px;
+	border: 1px solid #1E3A8A;
+	border-radius: 6px;
+	font-family: 'Poppins', sans-serif;
+	transition: all 0.3s ease;
+	background-color: #FFFFFF;
+}
+
+.form_edit:focus{
+	outline: none;
+	border-color: #152a5a;
+	box-shadow: 0 0 8px rgba(30, 58, 138, 0.2);
+	background-color: #FFFFFF;
+}
+
+
+.form_registrasi{
+	/*membuat lebar form penuh*/
+	box-sizing : border-box;
+	width: 100%;
+	padding: 12px;
+	font-size: 11pt;
+	margin-bottom: 20px;
+	border: 1px solid #1E3A8A;
+	border-radius: 6px;
+	font-family: 'Poppins', sans-serif;
+	transition: all 0.3s ease;
+	background-color: #FFFFFF;
+}
+
+.form_registrasi:focus{
+	outline: none;
+	border-color: #152a5a;
+	box-shadow: 0 0 8px rgba(30, 58, 138, 0.2);
+	background-color: #FFFFFF;
+}
+
+.tombol_login{
+	background: #1E3A8A;
+	color: white;
+	font-size: 11pt;
+	width: 100%;
+	border: none;
+	border-radius: 6px;
+	padding: 12px 20px;
+	font-family: 'Poppins', sans-serif;
+	font-weight: 600;
+	cursor: pointer;
+	transition: all 0.3s ease;
+	box-shadow: 0 2px 6px rgba(30, 58, 138, 0.2);
+}
+
+.tombol_login:hover{
+	background: #152a5a;
+	box-shadow: 0 4px 12px rgba(30, 58, 138, 0.3);
+	transform: translateY(-2px);
+}
+
+.tombol_login:active{
+	transform: translateY(0);
+	box-shadow: 0 2px 4px rgba(30, 58, 138, 0.2);
+}
+
+.tombol_login_baru{
+	background: #1E3A8A;
+	color: white;
+	font-size: 11pt;
+	width: 100%;
+	border: none;
+	border-radius: 6px;
+	padding: 12px 20px;
+	font-family: 'Poppins', sans-serif;
+	font-weight: 600;
+	cursor: pointer;
+	transition: all 0.3s ease;
+	box-shadow: 0 2px 6px rgba(30, 58, 138, 0.2);
+}
+
+.tombol_login_baru:hover{
+	background: #152a5a;
+	box-shadow: 0 4px 12px rgba(30, 58, 138, 0.3);
+	transform: translateY(-2px);
+}
+
+.tombol_login_baru:active{
+	transform: translateY(0);
+	box-shadow: 0 2px 4px rgba(30, 58, 138, 0.2);
+}
+
+.link{
+	color: #1E3A8A;
+	text-decoration: none;
+	font-size: 10pt;
+	font-weight: 600;
+	transition: color 0.3s;
+}
+
+.link:hover{
+	color: #152a5a;
+	text-decoration: underline;
+}
+
+.alert{
+	background: #E74C3C;
+	color: white;
+	padding: 10px;
+	text-align: center;
+	border:1px solid #C0392B;
+	border-radius: 5px;
+	font-family: 'Poppins', sans-serif;
+	font-weight: 500;
+}

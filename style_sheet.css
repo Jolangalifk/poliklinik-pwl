@@ -1,0 +1,965 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800;900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+}
+
+.container {
+    width: 600px;
+    height: 450px;
+    /* border: 1px solid black; */
+    margin: 120px auto;
+    background-color: #FFFFFF;
+    border-radius: 12px;
+    box-shadow: 0px 10px 10px rgba(30, 58, 138, 0.15);
+    position: relative;
+}
+
+.login-left-side {
+    width: 50%;
+    height: 100%;
+
+    float: left;
+}
+
+.login-right-side {
+    width: 50%;
+    height: 100%;
+
+    /* digunakan untuk memindahkan posisi elemen ke sisi kanan container */
+    float: right;
+}
+
+.container .login-left-side img {
+    position: absolute;
+    width: 146px;
+    height: 150px;
+    top: 20%;
+    left: 10%;
+}
+
+.container .login-left-side .marks {
+    position: absolute;
+    left: 9%;
+    top: 53%;
+    text-align: center;
+    color: #1E3A8A;
+}
+
+input {
+    display: block;
+}
+
+.container .login-right-side button {
+    background-color: #1E3A8A;
+    border-radius: 50px;
+    width: 251.83px;
+    height: 36.52px;
+    color: white;
+    font-family: 'Poppins', sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 19px;
+    line-height: 110.18%;
+    /* or 21px */
+    outline: none;
+    text-align: center;
+    border: none;
+    margin-top: 20px;
+    box-shadow: 2px 2px 6px rgba(30, 58, 138, 0.2);
+    transition-duration: 0.3s;
+}
+
+.container .login-right-side button:hover {
+    /* width: 255px; */
+    box-shadow: 0 7px 15px rgba(0, 0, 0, 0.25);
+}
+
+.container .login-right-side label {
+    font-family: 'Poppins', sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 19px;
+    line-height: 110.18%;
+    color: #1E3A8A;
+}
+
+.container .login-right-side input {
+    background: #F5F5F5;
+    box-shadow: 0px 3px 6px rgba(30, 58, 138, 0.1);
+    border-radius: 10px;
+    border: 1px solid #1E3A8A;
+    /* position: absolute; */
+    width: 251.83px;
+    height: 36.52px;
+    margin-bottom: 10px;
+    font-family: 'Poppins', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    padding: 10px;
+}
+
+.login-right-side .login-fill {
+    position: absolute;
+    top: 23%;
+}
+
+.login-right-side .login-fill .new-here {
+    /* display: block; */
+    /* margin-top: 50px; */
+    margin-right: 5px;
+    font-size: 15px;
+}
+
+.login-right-side .login-fill .new-user {
+    text-align: center;
+    margin-top: 20px;
+    font-weight: 100;
+}
+
+.login-right-side .login-fill .new-user a {
+    text-decoration: none;
+}
+
+.container .login-right-side .create-account-title {
+    color: #1E3A8A;
+    position: absolute;
+    top: 8%;
+    left: 55%;
+}
+
+.login-right-side .create-account-title hr {
+    position: absolute;
+    left: -25%;
+    margin-top: 10px;
+    /* background-color: #0C0B8B; */
+    /* border-radius: 5px; */ 
+    width: 150%;
+    border-top: 3px dashed #bbb
+}
+
+.login-right-side .login-fill .wrong-login-data p {
+    color: red;
+    font-style: italic;
+    margin-top: 20px;
+}
+
+.login-right-side .login-title {
+    color: #1E3A8A;
+    position: absolute;
+    top: 8%;
+    left: 64%;
+}
+
+.login-right-side .login-title hr {
+    position: absolute;
+    left: -45%;
+    margin-top: 10px;
+    width: 200%;
+    border-top: 3px dashed #bbb
+}
+
+.top-right .logout-button a {
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: linear-gradient(135deg, #DC2626 0%, #B91C1C 100%);
+    color: white;
+    padding: 10px 24px;
+    border-radius: 8px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    box-shadow: 0 3px 10px rgba(220, 38, 38, 0.3);
+}
+
+.top-right .logout-button a:hover {
+    background: linear-gradient(135deg, #B91C1C 0%, #991B1B 100%);
+    box-shadow: 0 5px 15px rgba(220, 38, 38, 0.4);
+    transform: translateY(-50%) translateY(-2px);
+}
+
+
+/* 
+#############################################################
+Dashboard Page Code
+#############################################################
+*/
+
+.top-left {
+    background: linear-gradient(135deg, #1E3A8A 0%, #152a5a 100%);
+    position: absolute;
+    width: 15%;
+    height: 10%;
+    left: 0px;
+    top: 0px;
+    float: left;
+    border-right: 3px solid #152a5a;
+    display: flex;
+    align-items: center;
+    padding: 0 15px;
+    box-shadow: 4px 0 12px rgba(30, 58, 138, 0.2);
+}
+
+.top-right {
+    background: linear-gradient(135deg, #FFFFFF 0%, #F8F9FA 100%);
+    position: absolute;
+    width: 85%;
+    height: 10%;
+    left: 15%;
+    top: 0px;
+    box-shadow: 0 4px 12px rgba(30, 58, 138, 0.12);
+    border-bottom: 3px solid #1E3A8A;
+}
+
+.horizontal-menu {
+    background: linear-gradient(180deg, #1E3A8A 0%, #152a5a 100%);
+    position: absolute;
+    width: 15%;
+    height: 90%;
+    top: 10%;
+    float: left;
+    box-shadow: 4px 0 20px rgba(30, 58, 138, 0.3);
+    overflow-y: auto;
+}
+
+.main-menu {
+    background: linear-gradient(135deg, #F8F9FA 0%, #FFFFFF 100%);
+    position: absolute;
+    width: 85%;
+    height: 90%;
+    top: 10%;
+    left: 15%;
+    padding: 30px;
+    overflow-y: auto;
+}
+
+.top-left img {
+    position: relative;
+    width: 45px;
+    height: 45px;
+    left: 0;
+    top: 0;
+    margin-right: 12px;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.15);
+    padding: 5px;
+}
+
+.top-left .title {
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 1;
+    position: relative;
+    color: #FFFFFF;
+    margin: 0;
+    white-space: nowrap;
+}
+
+.top-left .define {
+    position: relative;
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 9px;
+    line-height: 1.2;
+    text-align: left;
+    color: rgba(255, 255, 255, 0.8);
+    margin: -2px 0 0 0;
+    white-space: nowrap;
+    display: block;
+}
+
+.top-right .page-title {
+    position: absolute;
+    left: 2%;
+    top: 50%;
+    transform: translateY(-50%);
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 1.4;
+    color: #1E3A8A;
+    margin: 0;
+}
+
+.top-right .page-title b {
+    font-size: 18px;
+    display: block;
+    margin-bottom: 2px;
+}
+
+.horizontal-menu ul {
+    position: relative;
+    list-style-type: none;
+    margin: 30px 0 0 0;
+    padding: 0;
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 1.6;
+    text-align: center;
+    color: #FFFFFF;
+}
+
+.horizontal-menu li a {
+    display: block;
+    color: #FFFFFF;
+    padding: 14px 20px;
+    text-decoration: none;
+    text-align: left;
+    transition: all 0.3s ease;
+    border-left: 4px solid transparent;
+    margin: 5px 10px;
+    border-radius: 0 8px 8px 0;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.horizontal-menu li a:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    border-left-color: #FFFFFF;
+    padding-left: 25px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.horizontal-menu li a:active {
+    background-color: rgba(255, 255, 255, 0.25);
+}
+
+.horizontal-menu img {
+    position: relative;
+    width: 80px;
+    height: 80px;
+    left: 0;
+    top: 0;
+    border-radius: 50%;
+    margin: 25px auto 0;
+    display: block;
+    border: 4px solid rgba(255, 255, 255, 0.3);
+    background: rgba(255, 255, 255, 0.1);
+    padding: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.horizontal-menu .nama {
+    text-align: center;
+    position: relative;
+    top: 0;
+    left: 0;
+    color: #FFFFFF;
+    margin-top: 15px;
+    padding: 0 10px;
+}
+
+.horizontal-menu .nama h2 {
+    font-size: 15px;
+    font-weight: 700;
+    margin: 0 0 4px 0;
+    line-height: 1.3;
+}
+
+.horizontal-menu .nama h6 {
+    font-size: 12px;
+    font-weight: 500;
+    margin: 0;
+    opacity: 0.9;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.main-menu .queue-info {
+    position: absolute;
+    width: 294px;
+    height: 364px;
+    left: 470px;
+    top: 50px;
+
+    background: #FFFFFF;
+    box-shadow: 0px 5.5px 7px rgba(30, 58, 138, 0.15);
+    border-radius: 8px;
+}
+
+.main-menu .queue-info h1 {
+    position: absolute;
+    width: 269px;
+    height: 88px;
+    left: 15px; 
+    top: 25px; 
+
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: 800;
+    font-size: 35px;
+    line-height: 118.18%;
+    /* or 41px */
+
+    text-align: center;
+
+    color: #1E3A8A;
+}
+
+.main-menu .chat-konsul .chat-konsul-btn {
+    position: absolute;
+    width: 130.12px;
+    height: 143.61px;
+    left: 470px;
+    top: 430px;
+
+    background: #FFFFFF;
+    box-shadow: 0px 4px 4px rgba(30, 58, 138, 0.15);
+    border-radius: 12px;
+    border: 1px solid #1E3A8A;
+    transition-duration: 0.4s;
+}
+
+
+.main-menu .batal .batal-btn {
+    position: absolute;
+    width: 200px;
+    height: 70px;
+    left: 470px;
+    top: 430px;
+    margin-top: 150px;
+    margin-left :50px;
+
+    background:#E74C3C;
+    box-shadow: 0px 4px 4px rgba(30, 58, 138, 0.15);
+    border-radius: 12px;
+    border: none;
+    transition-duration: 0.4s;
+    color: white;
+    font-family: 'Poppins', sans-serif;
+}
+
+.main-menu .chat-konsul .chat-konsul-btn:hover {
+    box-shadow: 0px 15px 15px rgba(0, 0, 0, 0.25);
+}
+
+.main-menu .chat-konsul .chat-konsul-btn label {
+    position: absolute;
+    width: 113.15px;
+    height: 21.85px;
+    left: 8px;
+    top: 80px;
+
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 15px;
+    line-height: 18px;
+    text-align: center;
+    letter-spacing: -0.02em;
+
+    color: #1E3A8A;
+}
+
+.main-menu .pesan-antrian .pesan-antrian-btn{
+    position: absolute;
+    width: 130.12px;
+    height: 143.61px;
+    left: 630px;
+    top: 430px;
+
+    background: #FFFFFF;
+    box-shadow: 0px 4px 4px rgba(30, 58, 138, 0.15);
+    border-radius: 12px;
+    border: 1px solid #1E3A8A;
+    transition-duration: 0.4s;
+}
+
+.main-menu .pesan-antrian .pesan-antrian-btn:hover {
+    box-shadow: 0px 15px 15px rgba(0, 0, 0, 0.25);
+}
+
+.main-menu .pesan-antrian .pesan-antrian-btn label {
+    position: absolute;
+    width: 101.83px;
+    height: 24.98px;
+    left: 15px;
+    top: 85px;
+
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 15px;
+    line-height: 18px;
+    text-align: center;
+    letter-spacing: -0.02em;
+
+    /* Gray 1 */
+
+    color: #1E3A8A;
+}
+
+.main-menu .queue-info label {
+    position: absolute;
+    display: block;
+}
+
+.main-menu .queue-info .queue-number {
+    position: absolute;
+    width: 155px;
+    height: 146px;
+    left: 70px;
+    top: 125px;
+
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: 900;
+    font-size: 90px;
+    line-height: 146px;
+    text-align: center;
+    letter-spacing: -0.02em;
+
+    color: #1E3A8A;
+}
+
+.main-menu .queue-info .keterangan {
+    position: absolute;
+    width: 239px;
+    height: 24px;
+    left: 7px;
+    top: 250px;
+
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 19px;
+    line-height: 118.18%;
+    /* or 22px */
+
+    text-align: center;
+
+    color: #1E3A8A;
+}
+
+/* 
+####################################################################
+Appointment Page Code
+####################################################################
+*/
+.main-menu .antrian-container {
+    position: absolute;
+    width: 760px;
+    height: 527px;
+    left: 222px;
+    top: 50px; 
+
+    background: #FFFFFF;
+    box-shadow: 0px 5px 10px rgba(30, 58, 138, 0.15);
+    border-radius: 12px;
+    padding-top: 50px;
+}
+
+.main-menu .antrian-container label {
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 20px;
+    margin: 0px 50px;
+    /* identical to box height */
+    color: #1E3A8A;
+}
+
+/* .main-menu .antrian-container .bpjs,
+.main-menu .antrian-container .nama-antrian,
+.main-menu .antrian-container .nim-antrian,
+.main-menu .antrian-container .keperluan,
+.main-menu .antrian-container .pilih-tanggal{
+    /* display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+} */
+
+.main-menu .antrian-container input {
+    vertical-align: middle;
+    margin: 5px 10px 5px 50px;
+    padding: 10px;
+    background-color: #FFFFFF;
+    border: 1px solid #1E3A8A;
+    border-radius: 5px;
+    width: 550px;
+    font-family: 'Poppins', sans-serif;
+}
+
+.main-menu .antrian-edit input {
+    vertical-align: middle;
+    margin: 5px 10px 5px 50px;
+    padding: 10px;
+    background-color: #FFFFFF;
+    border: 1px solid #1E3A8A;
+    border-radius: 5px;
+    width: 200px;
+    font-family: 'Poppins', sans-serif;
+}
+
+.main-menu .antrian-container button {
+    position: absolute;
+    width: 142px;
+    height: 34px;
+    left: 460px;
+    top: 420px;
+
+    /* Blue 1 */
+
+    background: #1E3A8A;
+    border-radius: 50px;
+    border: none;
+    color: white;
+    font-family: 'Poppins', sans-serif;
+    transition-duration: 0.15s;
+}
+
+.main-menu .antrian-container button:hover {
+    box-shadow: 2px 2px 6px 2px rgba(0, 0, 0, 0.25);;
+}
+
+/* 
+#####################################################################
+Chat Konsultasi CSS Code
+#####################################################################
+*/
+
+.chat-page-container {
+    position: absolute;
+    width: 605px;
+    height: 474px;
+    left: 320px;
+    top: 80px;
+
+    background: #FFFFFF;
+    box-shadow: 0px 5px 10px rgba(30, 58, 138, 0.15);
+    border-radius: 12px;
+}
+
+.dokter{
+    position: absolute;
+    width: 421px;
+    height: 119px;
+    margin-top: 27px;
+    padding: 10px;
+
+    background: #E8F0F8;
+    box-shadow: 0px 4px 10px rgba(30, 58, 138, 0.15);
+    border-radius: 20px;
+    border-left: 4px solid #1E3A8A;
+    transition-duration: 0.3s;
+    
+}
+
+.dokter:hover {
+    box-shadow: 5px 10px 15px rgba(0, 0, 0, 0.3);
+}
+
+.doc-one {
+    left: 100px;
+}
+
+.doc-two {
+    left: 100px;
+    top: 150px;
+}
+
+.doc-three {
+    left: 100px;
+    top: 300px;
+}
+
+.dokter .fill-1,
+.dokter .fill-2,
+.dokter .fill-3 {
+    position: absolute;
+    width: 250px;
+    height: 30px;
+    left: 200px;
+    top: 30px; 
+
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 20px;
+    line-height: 30px;
+    letter-spacing: -0.02em;
+
+    color: #1E3A8A;
+}
+
+.dokter .fill-1 p,
+.dokter .fill-2 p,
+.dokter .fill-3 p {
+    font-size: 18px;
+    font-weight: normal;
+}
+
+.dokter .fill-1 img,
+.dokter .fill-2 img,
+.dokter .fill-3 img {
+    position: absolute;
+    width: 86px;
+    height: 92px;
+    left: -130px;
+    top: -20px; 
+    margin: 0px;
+}
+
+.chat-2-container {
+    position: absolute;
+    width: 1000px;
+    height: 100%;
+    left: 0px;
+    top: 0px;
+    background-color: white;
+    padding: 50px 150px 50px;
+    font-family: 'Poppins', sans-serif;
+}
+
+.chat-2-container .chat-input #input-chat{
+    position: relative;
+    width: 100%;
+    height: 53px;
+    padding: 20px;
+    /* left: 261px; */
+    top: 450px;
+    font-size: 18px;
+    font-family: 'Poppins', sans-serif;
+
+    background: #F5F5F5;
+    box-sizing: border-box;
+    border-radius: 50px;
+    border: 1px solid #1E3A8A;
+}
+.chat-2-container .chat-input #submit {
+    position: relative;
+    width: 70px;
+    height: 38px;
+    border-radius: 50px;
+    padding: 5px;
+    left: 620px;
+    top: 404.5px; 
+    border: none;
+    background-color:#1E3A8A;
+    color: white;
+    font-family: 'Poppins', sans-serif;
+    font-size: 18px;
+    font-weight: 600;
+    transition-duration: 0.2s;
+}
+
+.chat-2-container .chat-input #submit:hover {
+    box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.3);
+}
+
+.chat-2-container .doc-chat {
+    position: absolute;
+    width: 343px;
+    height: 47px;
+    top: 420px; 
+    left: 450px;
+    padding: 15px 20px; 
+
+    background: #E8F0F8;
+    border-radius: 20px 20px 0px 20px;
+    border-left: 3px solid #1E3A8A;
+}
+
+.chat-2-container .doc-chat p {
+    position: relative;
+    font-size: 20px;
+    text-align: right;
+    font-weight: normal;
+}
+
+.chat-2-container .doc-chat img {
+    position: absolute;
+    width: 50px;
+    left: 350px;
+    top: 0;
+}
+
+.chat-2-container .my-chat {
+    position: absolute;
+    width: 400px;
+    height: 47px;
+    top: 350px; 
+    left: 210px;
+    padding: 5px 10px; 
+
+    background: #F0F4FF;
+    border-radius: 20px 20px 20px 0px;
+    border-right: 3px solid #1E3A8A;
+}
+
+.chat-2-container .my-chat p {
+    position: relative;
+    font-size: 20px;
+    text-align: left;
+    font-weight: normal;
+    top: 7px;
+    left: 10px;
+}
+
+.chat-2-container .my-chat img {
+    position: absolute;
+    width: 50px;
+    left: -65px;
+    top: 0;
+}
+
+.chat-2-side {
+    position: absolute;
+}
+
+.chat-2-side img {
+    position: inherit;
+    width: 150px;
+    left: 1050px;
+    top: 25px;
+}
+
+.chat-2-side h1{
+    position: inherit;
+    width: 150px;
+    left: 1070px;
+    top: 180px;
+}
+
+.chat-2-side p {
+    position: inherit;
+    width: 150px;
+    left: 1070px;
+    top: 220px;
+}
+
+.chat-2-side .end-chat {
+    position: inherit;
+    border-radius: 50px;
+    width: 170px;
+    background-color: #1E3A8A;
+    color: white;
+    font-family: 'Poppins',sans-serif;
+    font-weight: 600;
+    font-size: 17px;
+    padding: 10px 5px;
+    border: none;
+    left: 1040px;
+    top: 508px;
+    transition-duration: 0.2s;
+}
+
+.chat-2-side .end-chat:hover {
+    box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.3);
+}
+
+/* 
+#####################################################################
+Table Styling
+#####################################################################
+*/
+
+table {
+    font-family: 'Poppins', sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(30, 58, 138, 0.1);
+}
+
+table thead tr {
+    background: linear-gradient(135deg, #1E3A8A 0%, #152a5a 100%);
+    color: white;
+}
+
+table th {
+    padding: 15px 18px;
+    text-align: left;
+    font-weight: 700;
+    border: none;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+table td {
+    padding: 12px 18px;
+    border: none;
+    border-bottom: 1px solid #E8E8E8;
+    font-size: 14px;
+    color: #333;
+}
+
+table tbody tr {
+    transition: all 0.3s ease;
+}
+
+table tbody tr:nth-child(even) {
+    background-color: #F8F9FA;
+}
+
+table tbody tr:hover {
+    background-color: #E8F0F8;
+    transform: scale(1.01);
+    box-shadow: 0 2px 8px rgba(30, 58, 138, 0.1);
+}
+
+table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+table a {
+    color: #1E3A8A;
+    text-decoration: none;
+    font-weight: 600;
+    margin-right: 12px;
+    padding: 6px 12px;
+    border-radius: 5px;
+    transition: all 0.3s;
+    display: inline-block;
+}
+
+table a:hover {
+    background-color: #1E3A8A;
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 2px 6px rgba(30, 58, 138, 0.3);
+}
+
+/* 
+#####################################################################
+Additional UI Styles
+#####################################################################
+*/
+
+h4 {
+    color: #1E3A8A;
+    font-family: 'Poppins', sans-serif;
+    margin-bottom: 15px;
+}
+
+h4 a {
+    color: #1E3A8A;
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s;
+}
+
+h4 a:hover {
+    color: #152a5a;
+    text-decoration: underline;
+}
