@@ -17,6 +17,12 @@
 		header("location:index.php?pesan=gagal");
 	}
 
+	// Hanya admin yang bisa tambah pasien
+	if ($_SESSION['level'] != "admin") {
+		header("location:manage_pasien.php");
+		exit();
+	}
+
 	?>
 	<div class="top-left">
 		<img src="./assets/logo-udinus.png" alt="logo-udinus">
@@ -69,26 +75,30 @@
 	</div>
 
 	<div class="kotak_login" style="width: 600px; position: absolute; left: 35%; top: 130px; margin: 0; margin-top: 0;">
-		<p class="tulisan_login" style="margin-bottom: 25px; font-size: 22px;">Tambah Pasien</p>
+		<p class="tulisan_login" style="margin-bottom: 25px; font-size: 22px;">Tambah Data Pasien Baru</p>
 
-		<form action="save_pasien.php" method="post">
+		<form action="simpan_pasien.php" method="post">
+			
+			<label>Nama Pasien</label>
+			<input type="text" name="nama_pasien" class="form_login" placeholder="Masukkan nama pasien" required>
+			
+			<label>Alamat Pasien</label>
+			<input type="text" name="alamat_pasien" class="form_login" placeholder="Masukkan alamat pasien" required>
 
-			<label for="nama_pasien" style="font-size: 14px; color: #1E3A8A; font-weight: 600;">Nama Pasien</label>
-			<input type="text" name="nama_pasien" class="form_login" placeholder="Masukkan Nama Pasien" required>
+			<label>No KTP Pasien</label>
+			<input type="text" name="noktp_pasien" class="form_login" placeholder="Masukkan nomor KTP" required>
 
-			<label for="alamat_pasien" style="font-size: 14px; color: #1E3A8A; font-weight: 600;">Alamat Pasien</label>
-			<input type="text" name="alamat_pasien" class="form_login" placeholder="Masukkan Alamat Pasien" required>
+			<label>No HP Pasien</label>
+			<input type="text" name="nohp_pasien" class="form_login" placeholder="Masukkan nomor HP" required>
 
-			<label for="noktp_pasien" style="font-size: 14px; color: #1E3A8A; font-weight: 600;">No KTP Pasien</label>
-			<input type="text" name="noktp_pasien" class="form_login" placeholder="Masukkan No KTP" required>
+			<label>No RM Pasien</label>
+			<input type="text" name="norm_pasien" class="form_login" placeholder="Masukkan nomor RM" required>
 
-			<label for="nohp_pasien" style="font-size: 14px; color: #1E3A8A; font-weight: 600;">No HP Pasien</label>
-			<input type="text" name="nohp_pasien" class="form_login" placeholder="Masukkan No HP" required>
+			<button type="submit" class="btn_login" style="background-color: #04AA6D; color: white; padding: 10px 20px; border-radius: 6px; border: none; font-weight: 600; cursor: pointer; transition: all 0.3s;">SIMPAN</button>
 
-			<label for="norm_pasien" style="font-size: 14px; color: #1E3A8A; font-weight: 600;">No RM Pasien</label>
-			<input type="text" name="norm_pasien" class="form_login" placeholder="Masukkan No Rekam Medis" required>
+			<a href="manage_pasien.php" class="btn_login" style="display: inline-block; background-color: #999999; color: white; padding: 10px 20px; border-radius: 6px; border: none; font-weight: 600; cursor: pointer; transition: all 0.3s; text-align: center; text-decoration: none; margin-left: 10px;">BATAL</a>
 
-			<button type="submit" class="btn_login" style="background-color: #1E3A8A; color: white; padding: 10px 20px; border-radius: 6px; border: none; font-weight: 600; cursor: pointer; transition: all 0.3s;">Simpan</button>
+			<br />
 
 		</form>
 

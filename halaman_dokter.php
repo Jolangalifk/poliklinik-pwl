@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Halaman admin</title>
+	<title>Halaman Dokter</title>
 	<link rel="stylesheet" href="style.css">
 	<link rel="stylesheet" href="style_sheet.css">
     <link rel="icon" type="image/png" href="assets/logo-udinus.png">
@@ -29,7 +29,7 @@
     <div class="top-right">
         <p class="page-title">
       <p> 
-			<b>Halaman Admin</b>
+			<b>Halaman Dokter</b>
 			<br>
 			Halo : <b><?php echo $_SESSION['username']; 
 			 			$username = $_SESSION["username"];
@@ -50,7 +50,7 @@
         </p>
 				
         <div class="logout-button">
-            <a href="logout.php"> 
+            <a href="index.php"> 
                 <b> Logout </b>
             </a>
         </div>
@@ -63,8 +63,8 @@
         </div>
         <ul>
             <li><a href="login.php">Home</a></li>
-            <li><a href="manage_dokter.php">Manage Dokter</a></li>
-			<li><a href="manage_pasien.php">Manage Pasien</a></li>
+            <li><a href="manage_dokter.php">Update</a></li>
+			<li><a href="manage_pemeriksaan_dokter.php">Pemeriksaan</a></li>
         </ul>
     </div>
 </body>

@@ -114,7 +114,7 @@
 
 					</td>
 					<td width="15%">
-						<a href="edit_dokter.php?id_dokter=<?php echo $data['id_dokter']; ?>">Edit</a>
+						<a href="edit_dokter.php?id_dokter=<?php echo $data['id_dokter']; ?>" style="background-color: #1E3A8A; color: white; padding: 5px 10px; border-radius: 6px; text-decoration: none; display: inline-block; font-weight: 600; transition: all 0.3s;">Edit</a>
 						<a href="hapus_dokter.php?id_dokter=<?php echo $data['id_dokter']; ?>" style="background-color: #DC2626; color: white; padding: 5px 10px; border-radius: 6px; text-decoration: none; display: inline-block; font-weight: 600; transition: all 0.3s;" onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')">Hapus</a>
 					</td>
 				</tr>

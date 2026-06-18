@@ -17,6 +17,25 @@
 		header("location:index.php?pesan=gagal");
 	}
 
+	// Validasi akses berdasarkan role
+	$level = $_SESSION['level'];
+	$username = $_SESSION['username'];
+	
+	// Jika level adalah pasien, periksa apakah mereka mengakses data dirinya sendiri
+	if ($level == "pasien" && isset($_GET['id'])) {
+		include "koneksi.php";
+		$id = mysqli_real_escape_string($connect, $_GET['id']);
+		$checkQuery = "SELECT nama_pasien FROM pasien WHERE id_pasien='$id'";
+		$checkResult = mysqli_query($connect, $checkQuery);
+		$checkData = mysqli_fetch_assoc($checkResult);
+		
+		// Jika nama pasien tidak sesuai dengan username yang login, redirect
+		if (!$checkData || $checkData['nama_pasien'] != $username) {
+			header("location:manage_pasien.php");
+			exit();
+		}
+	}
+
 	?>
 	<div class="top-left">
 		<img src="./assets/logo-udinus.png" alt="logo-udinus">

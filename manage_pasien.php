@@ -1,22 +1,26 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-	<title>Halaman Pasien</title>
-	<link rel="stylesheet" href="style.css">
-	<link rel="stylesheet" href="style_sheet.css">
+    <title>Halaman Pasien</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style_sheet.css">
     <link rel="icon" type="image/png" href="assets/logo-udinus.png">
 </head>
+
 <body>
-	<?php
-	session_start();
+    <?php
+    session_start();
 
-	// cek apakah yang mengakses halaman ini sudah login
-	if($_SESSION['level']==""){
-		header("location:index.php?pesan=gagal");
-	}
+    if (!isset($_SESSION['level']) || $_SESSION['level'] == "") {
+        header("location:index.php?pesan=gagal");
+        exit();
+    }
 
-	?>
-	    <div class="top-left">
+    $username = $_SESSION['username'];
+    $level    = $_SESSION['level'];
+    ?>
+    <div class="top-left">
         <img src="./assets/logo-udinus.png" alt="logo-udinus">
         <p class="title">
             POLIKLINIK
@@ -28,25 +32,25 @@
     </div>
     <div class="top-right">
         <p class="page-title">
-      <p>
-			<b>Halaman Pasien</b>
-			<br>
-			Halo : <b><?php echo $_SESSION['username'];
-			 			$username = $_SESSION["username"];
-						 function GetNama($username)
-        					{
-            					print $username;
-        					}
-			          ?></b>
-			<br>
-			</b> Anda telah login sebagai <b><?php echo $_SESSION['level'];
-						 $level = $_SESSION["level"];
-						 function GetLevel($level)
-        					{
-            					print $level;
-        					}
-			          ?></b>.
-	  </p>
+        <p>
+            <b>Halaman Pasien</b>
+            <br>
+            Halo : <b><?php echo $_SESSION['username'];
+                        $username = $_SESSION["username"];
+                        function GetNama($username)
+                        {
+                            print $username;
+                        }
+                        ?></b>
+            <br>
+            </b> Anda telah login sebagai <b><?php echo $_SESSION['level'];
+                                                $level = $_SESSION["level"];
+                                                function GetLevel($level)
+                                                {
+                                                    print $level;
+                                                }
+                                                ?></b>.
+        </p>
         </p>
 
         <div class="logout-button">
@@ -55,7 +59,7 @@
             </a>
         </div>
     </div>
-	    <div class="horizontal-menu">
+    <div class="horizontal-menu">
         <img src="./assets/logo-udinus.png" alt="profile">
         <div class="nama">
             <h2><?php getNama($username) ?></h2>
@@ -72,71 +76,86 @@
 
     <div class="content">
         <div style="margin-top:100px;margin-left:250px">
-        <table width="1027" style=" padding: 15px;">
-            <tr style="background-color: #04AA6D; color: white;">
-                <th width="5%">
-                    Id Pasien
-                </th>
-                <th width="20%">
-                    Nama Pasien
-               </th>
-                <th width="20%">
-                    Alamat
-                </th>
-                <th width="10%">
-                    No.Ktp Pasien
-                </th>
-				<th width="10%">
-                    No.HP Pasien
-                </th>
-				<th width="10%">
-                    No.Rm Pasien
-                </th>
-               <th width="15%">
-                    Action
-              </th>
-            </tr>
+            <?php if ($level == "admin") { ?>
+                <div style="margin-bottom: 20px;">
+                    <a href="tambah_pasien.php" style="padding: 10px 20px; background-color: #1E3A8A; color: white; text-decoration: none; border-radius: 5px; font-weight: bold;">+ Tambah Pasien</a>
+                </div>
+            <?php } ?>
+            <table width="1027" style=" padding: 15px;">
+                <tr style="background-color: #1E3A8A; color: white;">
+                    <th width="5%">
+                        Id Pasien
+                    </th>
+                    <th width="20%">
+                        Nama Pasien
+                    </th>
+                    <th width="20%">
+                        Alamat
+                    </th>
+                    <th width="10%">
+                        No.Ktp Pasien
+                    </th>
+                    <th width="10%">
+                        No.HP Pasien
+                    </th>
+                    <th width="10%">
+                        No.Rm Pasien
+                    </th>
+                    <th width="15%">
+                        Action
+                    </th>
+                </tr>
 
 
                 <?php
-            include "koneksi.php";
+                include "koneksi.php";
                 $username = $_SESSION['username'];
-                $query = mysqli_query($connect,"SELECT * FROM pasien WHERE nama_pasien='$username'");
-                    while($data=mysqli_fetch_array($query))
-                        {
-                            ?>
-                            <tr>
-                                    <td>
-                                        <?php echo $data['id_pasien'];?>
-                                    </td>
-                                    <td>
-                                        <?php echo $data['nama_pasien'];?>
-                                    </td>
-                                    <td>
-                                        <?php echo $data['alamat_pasien'];?>
-                                    </td>
-									<td>
-                                        <?php echo $data['noktp_pasien'];?>
-                                    </td>
-                                    <td>
-                                        <?php echo $data['nohp_pasien'];?>
-                                    </td>
-                                    <td>
-                                        <?php echo $data['norm_pasien'];?>
-                                    </td>
-                                    <td>
-                                        <?php
-										echo "<a href='edit_pasien.php?id=".$data['id_pasien']."'>Edit||</a>";
-										echo "<a href='hapus_pasien.php?id=".$data['id_pasien']."'>Hapus</a>";
-
-										?>
-                                    </td>
-                            </tr>
+                $level = $_SESSION['level'];
+                
+                // Jika admin atau dokter, tampilkan semua pasien
+                // Jika pasien, tampilkan hanya data dirinya sendiri
+                if ($level == "admin" || $level == "dokter") {
+                    $query = mysqli_query($connect, "SELECT * FROM pasien");
+                } else {
+                    // Pasien hanya bisa melihat data dirinya sendiri
+                    $query = mysqli_query($connect, "SELECT * FROM pasien WHERE nama_pasien='$username'");
+                }
+                
+                while ($data = mysqli_fetch_array($query)) {
+                ?>
+                    <tr>
+                        <td>
+                            <?php echo $data['id_pasien']; ?>
+                        </td>
+                        <td>
+                            <?php echo $data['nama_pasien']; ?>
+                        </td>
+                        <td>
+                            <?php echo $data['alamat_pasien']; ?>
+                        </td>
+                        <td>
+                            <?php echo $data['noktp_pasien']; ?>
+                        </td>
+                        <td>
+                            <?php echo $data['nohp_pasien']; ?>
+                        </td>
+                        <td>
+                            <?php echo $data['norm_pasien']; ?>
+                        </td>
+                        <td>
                             <?php
-                        }
+                            echo "<a href='edit_pasien.php?id=" . $data['id_pasien'] . "'>Edit</a>";
+                            echo "<a href='hapus_pasien.php?id=" . $data['id_pasien'] . "'>Hapus</a>";
+
+                            ?>
+                        </td>
+                    </tr>
+                <?php
+                }
                 ?>
 
-      </table>
-    </div>
+            </table>
+        </div>
 </body>
+
 </html>

@@ -50,7 +50,7 @@
         </p>
 				
         <div class="logout-button">
-            <a href="logout.php"> 
+            <a href="index.php"> 
                 <b> Logout </b>
             </a>
         </div>
@@ -67,6 +67,7 @@
             <li><a href="manage_pasien.php">Home</a></li>
 			<li><a href="manage_pasien.php">Update</a></li>
 			<li><a href="manage_daftar.php">Daftar</a></li>
+			<li><a href="manage_antrian_daftar_pasien.php">Antrian</a></li>
         </ul>
     </div>
 	<!-- <div style="margin-top: 120px; margin-left: 260px; padding: 30px; width: calc(100% - 320px);">

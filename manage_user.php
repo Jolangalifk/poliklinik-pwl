@@ -117,9 +117,8 @@
 					</td>
 					<td>
 						<?php
-						echo "<a href='edit_user.php?id=" . $data['id'] . "'>Edit||</a>";
+						echo "<a href='edit_user.php?id=" . $data['id'] . " ' >Edit</a>";
 						echo "<a href='hapus_user.php?id=" . $data['id'] . "'>Hapus</a>";
-
 						?>
 					</td>
 				</tr>

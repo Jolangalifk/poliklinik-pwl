@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title>Halaman admin</title>
+    <title>Halaman Dokter</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="style_sheet.css">
     <link rel="stylesheet" href="style_periksa.css">
@@ -44,7 +44,7 @@
     <div class="top-right">
         <p class="page-title">
         <p>
-            <b>Halaman Admin</b>
+            <b>Halaman Dokter</b>
             <br>
             Halo : <b><?php echo $_SESSION['username'];
                         $username = $_SESSION["username"];
@@ -85,27 +85,22 @@
         </ul>
     </div>
 
-     <?php
-    include "koneksi.php";
-    $id_daftar = $_GET['id_daftar'];
-    $data = mysqli_fetch_array(
-        mysqli_query(
-            $connect,
-            "SELECT
-			daftar.*,pasien.nama_pasien,pasien.norm_pasien,dokter.nama_dokter
-			FROM daftar,pasien,dokter
-			WHERE
- 			daftar.id_pasien=pasien.id_pasien
-			AND
-			daftar.id_dokter=dokter.id_dokter
-			AND
-			status_periksa='menunggu'
-			AND
-			id_daftar='$id_daftar'"
-        )
-    );
-    //$data = mysqli_fetch_array($query);
-    ?>
+
+    <?php
+		include "koneksi.php";
+		$id_daftar=$_GET['id_daftar'];
+		$id_rekam_medis=$_GET['id_rekam_medis'];
+		$data=mysqli_fetch_array(
+		mysqli_query($connect,"SELECT rekam_medis., daftar., pasien.norm_pasien, pasien.nama_pasien, dokter.nama_dokter, poli.nama_poli
+					FROM rekam_medis, daftar, pasien, dokter, poli
+					WHERE rekam_medis.id_daftar = daftar.id_daftar
+					AND rekam_medis.id_pasien = pasien.id_pasien
+					AND rekam_medis.id_dokter = dokter.id_dokter
+					AND dokter.id_poli = poli.id_poli"			
+		)
+	);
+	//$data = mysqli_fetch_array($query);
+	?>
 
     <!--<div class="header"> -->
     <div style="margin-top:70px;margin-left:250px">
