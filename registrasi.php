@@ -30,11 +30,12 @@
  			<label>Level</label>
 			<select name="level" class="form_login" required="required">
 				<option value="">-- Pilih Level --</option>
-				<option value="Medis">Medis</option>
-				<option value="Dokter">Dokter</option>
-				<option value="Pegawai">Pegawai</option>
-				<option value="Apoteker">Apoteker</option>
-				<option value="Pasien">Pasien</option>
+				<option value="admin">admin</option>
+				<option value="medis">medis</option>
+				<option value="dokter">dokter</option>
+				<option value="pegawai">pegawai</option>
+				<option value="apoteker">apoteker</option>
+				<option value="pasien">pasien</option>
 			</select>
 			
 			<input type="submit" class="tombol_login" value="REGISTRASI">

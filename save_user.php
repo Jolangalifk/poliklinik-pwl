@@ -26,12 +26,13 @@
 		}
 		// Jika level adalah dokter, simpan juga ke tabel dokter
 		else if($level_lower == "dokter"){
-			$queryDokter = "INSERT INTO dokter (nama_dokter) VALUES('".$username."')";
+			$queryDokter = "INSERT INTO dokter (nama_dokter, alamat_dokter, nohp_dokter, biaya_periksa, keterangan_dokter, foto_dokter) VALUES('".$username."', '', '', 0, '', '')";
 			$sqlDokter = mysqli_query($connect, $queryDokter);
 			
 			if(!$sqlDokter){
 				echo "Maaf, Terjadi kesalahan saat mencoba untuk menyimpan data dokter ke database.";
-				echo "<br><a href='tambah_user.php'>Kembali Ke Form</a>";
+				echo "<br>Error: " . mysqli_error($connect);
+				echo "<br><a href='manage_user.php'>Kembali Ke Form</a>";
 				exit;
 			}
 		}

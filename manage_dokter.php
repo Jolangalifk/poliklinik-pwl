@@ -73,7 +73,7 @@
 	</div>
 
 	<div style="margin-top: 120px; margin-left: 260px; padding: 30px; width: calc(100% - 320px);">
-		<h4 style="margin-bottom: 25px; font-size: 20px; color: #1E3A8A;"><a href="tambah_dokter.php" style="background-color: #1E3A8A; color: white; padding: 10px 20px; border-radius: 6px; text-decoration: none; display: inline-block; font-weight: 600; transition: all 0.3s;">+ Tambah Data Dokter</a></h4>
+		<!-- <h4 style="margin-bottom: 25px; font-size: 20px; color: #1E3A8A;"><a href="tambah_dokter.php" style="background-color: #1E3A8A; color: white; padding: 10px 20px; border-radius: 6px; text-decoration: none; display: inline-block; font-weight: 600; transition: all 0.3s;">+ Tambah Data Dokter</a></h4> -->
 		<table width="100%" style="padding: 15px; box-shadow: 0 2px 8px rgba(30, 58, 138, 0.1); border-radius: 8px; overflow: hidden;">
 			<tr style="background-color: #1E3A8A; color: white; font-family: 'Poppins', sans-serif; font-weight: 600;">
 				<th width="5%" style="text-align: center;">ID Dokter</th>
