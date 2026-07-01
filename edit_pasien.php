@@ -17,25 +17,6 @@
 		header("location:index.php?pesan=gagal");
 	}
 
-	// Validasi akses berdasarkan role
-	$level = $_SESSION['level'];
-	$username = $_SESSION['username'];
-	
-	// Jika level adalah pasien, periksa apakah mereka mengakses data dirinya sendiri
-	if ($level == "pasien" && isset($_GET['id'])) {
-		include "koneksi.php";
-		$id = mysqli_real_escape_string($connect, $_GET['id']);
-		$checkQuery = "SELECT nama_pasien FROM pasien WHERE id_pasien='$id'";
-		$checkResult = mysqli_query($connect, $checkQuery);
-		$checkData = mysqli_fetch_assoc($checkResult);
-		
-		// Jika nama pasien tidak sesuai dengan username yang login, redirect
-		if (!$checkData || $checkData['nama_pasien'] != $username) {
-			header("location:manage_pasien.php");
-			exit();
-		}
-	}
-
 	?>
 	<div class="top-left">
 		<img src="./assets/logo-udinus.png" alt="logo-udinus">
@@ -70,7 +51,7 @@
 		</p>
 		</p>
 		<div class="logout-button">
-			<a href="logout.php">
+			<a href="index.php">
 				<b> Logout </b>
 			</a>
 		</div>
@@ -82,7 +63,7 @@
 			<h6><?php getLevel($level) ?></h6>
 		</div>
 		<ul>
-			<li><a href="halaman_admin.php">Home</a></li>
+			<li><a href="index.php">Home</a></li>
 			<li><a href="manage_pasien.php">Manage Pasien</a></li>
 		</ul>
 	</div>
@@ -93,13 +74,10 @@
 		<form action="update_pasien.php" method="post">
 			<?php
 			include "koneksi.php";
-			if (isset($_GET['id'])) {
-				$id = mysqli_real_escape_string($connect, $_GET['id']);
-				$query = "SELECT * FROM pasien WHERE id_pasien='$id'";
-				$sql = mysqli_query($connect, $query);
-				
-				if (mysqli_num_rows($sql) > 0) {
-					while ($data = mysqli_fetch_array($sql)) {
+			$id = $_GET['id'];
+			$query = "SELECT * FROM pasien WHERE id_pasien='$id'";
+			$sql = mysqli_query($connect, $query);
+			while ($data = mysqli_fetch_array($sql)) {
 			?>
 				<input type="hidden" name="id_pasien" value="<?php echo $data['id_pasien'] ?>">
 				
@@ -121,15 +99,8 @@
 				<label>No RM Pasien</label>
 				<input type="text" name="norm_pasien" class="form_login" value="<?php echo $data['norm_pasien'] ?>" required>
 			<?php
-					}
-				} else {
-					echo "<p style='color: red;'>Data pasien tidak ditemukan!</p>";
-				}
-			} else {
-				echo "<p style='color: red;'>ID Pasien tidak valid!</p>";
-			}
-			?>
-			<button type="submit" class="btn_login" style="background-color: #1E3A8A; color: white; padding: 10px 20px; border-radius: 6px; border: none; font-weight: 600; cursor: pointer; transition: all 0.3s;">UPDATE</button>
+			}			?>
+			<input type="submit" class="tombol_login" value="UPDATE" style="background-color: #1E3A8A; color: white; padding: 10px 20px; border-radius: 6px; border: none; font-weight: 600; cursor: pointer; transition: all 0.3s; width: 100%;">
 
 			<br />
 

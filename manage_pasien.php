@@ -83,26 +83,26 @@
             <?php } ?>
             <table width="1027" style=" padding: 15px;">
                 <tr style="background-color: #1E3A8A; color: white;">
-                    <th width="5%">
+                    <th width="5%" style="text-align: center;">
                         Id Pasien
                     </th>
-                    <th width="20%">
+                    <th width="20%" style="text-align: center;">
                         Nama Pasien
                     </th>
-                    <th width="20%">
+                    <th width="20%" style="text-align: center;">
                         Alamat
                     </th>
-                    <th width="10%">
+                    <th width="10%" style="text-align: center;">
                         No.Ktp Pasien
                     </th>
-                    <th width="10%">
+                    <th width="10%" style="text-align: center;">
                         No.HP Pasien
                     </th>
-                    <th width="10%">
+                    <th width="10%" style="text-align: center;">
                         No.Rm Pasien
                     </th>
-                    <th width="15%">
-                        Action
+                    <th width="15%" style="text-align: center;">
+                        Aksi
                     </th>
                 </tr>
 
@@ -124,30 +124,27 @@
                 while ($data = mysqli_fetch_array($query)) {
                 ?>
                     <tr>
-                        <td>
+                        <td style="text-align: center;">
                             <?php echo $data['id_pasien']; ?>
                         </td>
-                        <td>
+                        <td style="text-align: center;">
                             <?php echo $data['nama_pasien']; ?>
                         </td>
-                        <td>
+                        <td style="text-align: center;">
                             <?php echo $data['alamat_pasien']; ?>
                         </td>
-                        <td>
+                        <td style="text-align: center;">
                             <?php echo $data['noktp_pasien']; ?>
                         </td>
-                        <td>
+                        <td style="text-align: center;">
                             <?php echo $data['nohp_pasien']; ?>
                         </td>
-                        <td>
+                        <td style="text-align: center;">
                             <?php echo $data['norm_pasien']; ?>
                         </td>
-                        <td>
-                            <?php
-                            echo "<a href='edit_pasien.php?id=" . $data['id_pasien'] . "'>Edit</a>";
-                            echo "<a href='hapus_pasien.php?id=" . $data['id_pasien'] . "'>Hapus</a>";
-
-                            ?>
+                        <td style="text-align: center; display: flex; flex-direction: row; gap: 10px;">
+                            <a href="edit_pasien.php?id=<?= $data['id_pasien'] ?>" style="background-color: #1E3A8A; color: white; padding: 10px 20px; border-radius: 6px; text-decoration: none; display: inline-block; font-weight: 600; transition: all 0.3s; margin-right: 10px;">Edit</a>
+						    <a href="hapus_pasien.php?id=<?= $data['id_pasien'] ?>" style="background-color: #DC2626; color: white; padding: 10px 20px; border-radius: 6px; text-decoration: none; display: inline-block; font-weight: 600; transition: all 0.3s;">Hapus</a>
                         </td>
                     </tr>
                 <?php
