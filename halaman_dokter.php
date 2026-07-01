@@ -62,8 +62,8 @@
             <h6><?php getLevel($level) ?></h6>
         </div>
         <ul>
-            <li><a href="login.php">Home</a></li>
-            <li><a href="manage_dokter.php">Update</a></li>
+            <li><a href="halaman_dokter.php">Home</a></li>
+            <li><a href="manage_dokter.php">Dokter</a></li>
 			<li><a href="manage_pemeriksaan_dokter.php">Periksa</a></li>
         </ul>
     </div>
