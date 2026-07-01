@@ -8,6 +8,7 @@ $alamat_dokter      = $_POST['alamat_dokter'];
 $nohp_dokter        = $_POST['nohp_dokter'];
 $keterangan_dokter  = $_POST['keterangan_dokter'];
 $id_poli            = $_POST['id_poli'];
+$biaya_periksa      = $_POST['biaya_periksa'];
 
 // Folder upload
 $folder = "foto/";
@@ -44,9 +45,9 @@ if ($error == 0) {
 
             // Query simpan database
             $query = "INSERT INTO dokter 
-            (nama_dokter, alamat_dokter, nohp_dokter, keterangan_dokter, id_poli, foto_dokter) 
+            (nama_dokter, alamat_dokter, nohp_dokter, keterangan_dokter, id_poli, biaya_periksa, foto_dokter) 
             VALUES 
-            ('$nama_dokter', '$alamat_dokter', '$nohp_dokter', '$keterangan_dokter', '$id_poli', '$nama_baru')";
+            ('$nama_dokter', '$alamat_dokter', '$nohp_dokter', '$keterangan_dokter', '$id_poli', '$biaya_periksa', '$nama_baru')";
 
             $sql = mysqli_query($connect, $query);
 

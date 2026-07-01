@@ -64,8 +64,8 @@
             <h6><?php getLevel($level) ?></h6>
         </div>
         <ul>
-            <li><a href="manage_dokter.php">Home</a></li>
-            <li><a href="manage_dokter.php">Manage dokter</a></li>
+            <li><a href="index.php">Home</a></li>
+            <li><a href="manage_dokter.php">Manage Dokter</a></li>
         </ul>
     </div>
 
@@ -85,71 +85,73 @@
         $alamat_dokter = $data['alamat_dokter'];
         $nohp_dokter = $data['nohp_dokter'];
         $id_poli = $data['id_poli'];
+        $biaya_periksa = $data['biaya_periksa'];
         $keterangan_dokter = $data['keterangan_dokter'];
         $foto_dokter = $data['foto_dokter'];
         $id_user = $data['id_user'];
     }
     ?>
 
-    <div class="kotak_login">
-        <p class="tulisan_login">Update Dokter</p>
+    <div class="kotak_login" style="width: 600px; position: absolute; left: 35%; top: 130px; margin: 0; margin-top: 0;">
+        <p class="tulisan_login" style="margin-bottom: 25px; font-size: 22px;">Update Dokter</p>
 
         <form action="update_dokter.php" method="post" enctype="multipart/form-data">
-            <label>Identitas Dokter</label>
-            <input type="text" name="id_dokter" class="form_login" placeholder="Identitas .." required="required"
-                value="<?php echo $id_dokter; ?>"readonly>
-
-            <label>Nama Dokter</label>
-            <input type="text" name="nama_dokter" class="form_login" placeholder="Nama .." required="required"
-                value="<?php echo $nama_dokter; ?>">
-
-            <label>Alamat Dokter</label>
-            <input type="text" name="alamat_dokter" class="form_login" placeholder="alamat .." required="required"
-                value="<?php echo $alamat_dokter; ?>">
-
-            <label>Nohp Dokter</label>
-            <input type="text" name="nohp_dokter" class="form_login" placeholder="nohp .." required="required"
-                value="<?php echo $nohp_dokter; ?>">
-
+            
             <input type="hidden" name="id_user" value="<?php echo $id_user; ?>">
+            <input type="hidden" name="id_dokter" value="<?php echo $id_dokter; ?>">
 
-            <label>Keterangan Dokter</label>
-            <br>
-            <select name="keterangan_dokter" required>
-    <option value="">--Pilih Keterangan--</option>
-    <option value="Ada">Ada</option>
-    <option value="Tidak">Tidak</option>
-</select>
-            <br>
-            <br>
+            <label for="id_dokter" style="font-size: 14px; color: #1E3A8A; font-weight: 600;">ID Dokter</label>
+            <input type="text" class="form_login" value="<?php echo $id_dokter; ?>" disabled>
 
-            <select name="id_poli" id="id_poli" onChange="tampilPoli()" required>
+            <label for="nama_dokter" style="font-size: 14px; color: #1E3A8A; font-weight: 600;">Nama Dokter</label>
+            <input type="text" name="nama_dokter" class="form_login" placeholder="Masukkan Nama Dokter" required="required" value="<?php echo $nama_dokter; ?>">
+
+            <label for="alamat_dokter" style="font-size: 14px; color: #1E3A8A; font-weight: 600;">Alamat Dokter</label>
+            <input type="text" name="alamat_dokter" class="form_login" placeholder="Masukkan Alamat Dokter" required="required" value="<?php echo $alamat_dokter; ?>">
+
+            <label for="nohp_dokter" style="font-size: 14px; color: #1E3A8A; font-weight: 600;">No HP Dokter</label>
+            <input type="text" name="nohp_dokter" class="form_login" placeholder="Masukkan No HP Dokter" required="required" value="<?php echo $nohp_dokter; ?>">
+
+            <label for="keterangan_dokter" style="font-size: 14px; color: #1E3A8A; font-weight: 600;">Keterangan Dokter</label>
+            <select name="keterangan_dokter" class="form_login" required>
+                <option value="">Pilih Keterangan</option>
+                <option value="Ada" <?php if($keterangan_dokter=='Ada') echo 'selected'; ?>>Ada</option>
+                <option value="Tidak" <?php if($keterangan_dokter=='Tidak') echo 'selected'; ?>>Tidak</option>
+            </select>
+
+            <label for="id_poli" style="font-size: 14px; color: #1E3A8A; font-weight: 600;">Poli</label>
+            <select name="id_poli" id="id_poli" class="form_login" onChange="tampilPoli()" required>
                 <option value="">--Pilih Poli--</option>
-
                 <?php
                 include("koneksi.php");
                 $sql = "SELECT * FROM poli";
                 $result = mysqli_query($connect, $sql);
 
                 while ($row = mysqli_fetch_assoc($result)) {
-                    echo "<option value='" . $row['id_poli'] . "'>"
+                    $selected = ($row['id_poli'] == $id_poli) ? "selected" : "";
+                    echo "<option value='" . $row['id_poli'] . "' $selected>"
                         . $row['id_poli'] . " - " . $row['nama_poli'] .
                         "</option>";
                 }
                 ?>
             </select>
-            <br>
-            <br>
-            <label>Nama Poli</label>
-            <input type="text" name="nama_poli" class="form_login" id="nama_poli" readonly>
-            <label>Foto Dokter</label><br>
-            <input type="file" name="foto_dokter" accept="image/*" onChange="previewFoto(event)">
-            <br>
-            <img id="preview" width="100" height="100" style="display:none;">
-            <br />
 
-            <input type="submit" class="tombol_login" value="UPDATE">
-            <br />
+            <label style="font-size: 14px; color: #1E3A8A; font-weight: 600;">Nama Poli</label>
+            <input type="text" name="nama_poli" class="form_login" id="nama_poli" readonly>
+
+            <label for="biaya_periksa" style="font-size: 14px; color: #1E3A8A; font-weight: 600;">Biaya Periksa</label>
+            <input type="decimal" name="biaya_periksa" class="form_login" placeholder="Masukkan Biaya Periksa" required value="<?php echo $biaya_periksa; ?>">
+
+            <label style="font-size: 14px; color: #1E3A8A; font-weight: 600;">Foto Dokter</label><br>
+			<input type="file" name="foto_dokter" accept="image/*" onChange="previewFoto(event)">
+			<br>
+            <?php if (!empty($foto_dokter)) { ?>
+                <img src="foto/<?php echo $foto_dokter; ?>" id="preview" width="100" height="100" style="display:block; margin-bottom: 10px;">
+            <?php } else { ?>
+			    <img id="preview" width="100" height="100" style="display:none; margin-bottom: 10px;">
+            <?php } ?>
+
+            <button type="submit" class="btn_login" style="background-color: #1E3A8A; color: white; padding: 10px 20px; border-radius: 6px; border: none; font-weight: 600; cursor: pointer; transition: all 0.3s;">UPDATE</button>
         </form>
     </div>
     <script>

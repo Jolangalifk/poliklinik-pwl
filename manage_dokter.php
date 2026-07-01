@@ -52,7 +52,7 @@
 		</p>
 		<!-- <p>Jolang Alif Khan - A12.2024.07239</p> -->
 		<div class="logout-button">
-			<a href="logout.php">
+			<a href="index.php">
 				<b> Logout </b>
 			</a>
 		</div>
@@ -76,13 +76,14 @@
 		<h4 style="margin-bottom: 25px; font-size: 20px; color: #1E3A8A;"><a href="tambah_dokter.php" style="background-color: #1E3A8A; color: white; padding: 10px 20px; border-radius: 6px; text-decoration: none; display: inline-block; font-weight: 600; transition: all 0.3s;">+ Tambah Data Dokter</a></h4>
 		<table width="100%" style="padding: 15px; box-shadow: 0 2px 8px rgba(30, 58, 138, 0.1); border-radius: 8px; overflow: hidden;">
 			<tr style="background-color: #1E3A8A; color: white; font-family: 'Poppins', sans-serif; font-weight: 600;">
-				<th width="5%">ID Dokter</th>
-				<th width="20%">Nama Dokter</th>
-				<th width="20%">Alamat Dokter</th>
-				<th width="20%">No HP Dokter</th>
-				<th width="20%">Keterangan Dokter</th>
-				<th width="20%">Foto Dokter</th>
-				<th width="15%">Aksi</th>
+				<th width="5%" style="text-align: center;">ID Dokter</th>
+				<th width="20%" style="text-align: center;">Nama Dokter</th>
+				<th width="20%" style="text-align: center;">Alamat Dokter</th>
+				<th width="20%" style="text-align: center;">No HP Dokter</th>
+				<th width="20%" style="text-align: center;">Keterangan Dokter</th>
+				<th width="20%" style="text-align: center;">Biaya periksa</th>
+				<th width="20%" style="text-align: center;">Foto Dokter</th>
+				<th width="40%" style="text-align: center;">Aksi</th>
 			</tr>
 
 
@@ -92,28 +93,31 @@
 			while ($data = mysqli_fetch_array($query)) {
 			?>
 				<tr style="background-color: white; color: #1E3A8A; font-family: 'Poppins', sans-serif;">
-					<td width="5%">
+					<td width="5%" align="center">
 						<?php echo $data['id_dokter']; ?>
 					</td>
-					<td width="20%">
+					<td width="20%" align="center">
 						<?php echo $data['nama_dokter']; ?>
 					</td>
-					<td width="20%">
+					<td width="20%" align="center">
 						<?php echo $data['alamat_dokter']; ?>
 					</td>
-					<td width="20%">
+					<td width="20%" align="center">
 						<?php echo $data['nohp_dokter']; ?>
 					</td>
-					<td width="20%">
+					<td width="20%" align="center">
 						<?php echo $data['keterangan_dokter']; ?>
 					</td>
-					<td>
+					<td width="20%" align="center">
+						<?php echo $data['biaya_periksa']; ?>
+					</td>
+					<td width="20%" align="center">
 						<img src="foto/<?php echo $data['foto_dokter']; ?>"
 							width="50"
 							height="50">
 
 					</td>
-					<td width="15%">
+					<td width="10%" align="center">
 						<a href="edit_dokter.php?id_dokter=<?php echo $data['id_dokter']; ?>" style="background-color: #1E3A8A; color: white; padding: 5px 10px; border-radius: 6px; text-decoration: none; display: inline-block; font-weight: 600; transition: all 0.3s;">Edit</a>
 						<a href="hapus_dokter.php?id_dokter=<?php echo $data['id_dokter']; ?>" style="background-color: #DC2626; color: white; padding: 5px 10px; border-radius: 6px; text-decoration: none; display: inline-block; font-weight: 600; transition: all 0.3s;" onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')">Hapus</a>
 					</td>

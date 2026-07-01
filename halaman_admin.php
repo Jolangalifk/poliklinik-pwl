@@ -2,7 +2,7 @@
 <html>
 
 <head>
-	<title>Jolang Alif Khan - A12.2024.07239</title>
+	<title>Halaman Admin</title>
 	<link rel="stylesheet" href="style.css">
 	<link rel="stylesheet" href="style_sheet.css">
 	<link rel="icon" type="image/png" href="assets/logo-udinus.png">
@@ -31,7 +31,7 @@
 	<div class="top-right" style="display: flex; padding-left: 10px; flex-direction: row; justify-content: space-between; align-items: center;">
 		<p class="page-title">
 		<p style="width: fit-content;">
-			<b>Jolang Alif Khan - A12.2024.07239</b>
+			<b>Halaman Admin</b>
 			<br>
 			Halo : <b><?php echo $_SESSION['username'];
 						$username = $_SESSION["username"];
@@ -64,11 +64,12 @@
 		</div>
 		<ul>
 			<li><a href="halaman_admin.php">Home</a></li>
-			<li><a href="manage_dokter.php">Dokter</a></li>
 			<li><a href="manage_user.php">User</a></li>
-			<!-- <li><a href="manage_poli.php">Poli</a></li> -->
-			<li><a href="manage_pasien.php">Pasien</a></li>
-			<li><a href="manage_pemeriksaan_pasien.php">Periksa</a></li>
+			<li><a href="manage_dokter.php">Dokter</a></li>
+			<li><a href="manage_poli.php">Poli</a></li>
+			<li><a href="manage_obat.php">Obat</a></li>
+			<!-- <li><a href="manage_pasien.php">Pasien</a></li> -->
+			<li><a href="manage_pemeriksaan_pasien.php">Antrian</a></li>
 		</ul>
 	</div>
 </body>

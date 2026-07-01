@@ -140,10 +140,13 @@ function previewFoto(event)
             </select>
             <br>
             <br>
-            <label>Nama Poli</label>
+            <label style="font-size: 14px; color: #1E3A8A; font-weight: 600;">Nama Poli</label>
             <input type="text" name="nama_poli" class="form_login" id="nama_poli" readonly>
 
-            <label>Foto Dokter</label><br>
+            <label for="biaya_periksa" style="font-size: 14px; color: #1E3A8A; font-weight: 600;">Biaya Periksa</label>
+            <input type="decimal" name="biaya_periksa" class="form_login" placeholder="Masukkan Biaya Periksa" required>
+
+            <label style="font-size: 14px; color: #1E3A8A; font-weight: 600;">Foto Dokter</label><br>
 			<input type="file" name="foto_dokter" accept="image/*" onChange="previewFoto(event)" required>
 			<br>
 			<img id="preview" width="100" height="100" style="display:none;">

@@ -7,7 +7,7 @@
     <link rel="icon" type="image/png" href="assets/logo-udinus.png">
 </head>
 <body>
-	<?php 
+	<?php  
 	session_start();
 
 	// cek apakah yang mengakses halaman ini sudah login

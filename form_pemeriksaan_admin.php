@@ -87,24 +87,46 @@
 
      <?php
     include "koneksi.php";
-    $id_daftar = $_GET['id_daftar'];
-    $data = mysqli_fetch_array(
-        mysqli_query(
-            $connect,
-            "SELECT
-			daftar.*,pasien.nama_pasien,pasien.norm_pasien,dokter.nama_dokter
-			FROM daftar,pasien,dokter
-			WHERE
- 			daftar.id_pasien=pasien.id_pasien
-			AND
-			daftar.id_dokter=dokter.id_dokter
-			AND
-			status_periksa='menunggu'
-			AND
-			id_daftar='$id_daftar'"
-        )
+    
+    // Validasi dan ambil parameter
+    if (!isset($_GET['id_daftar']) || empty($_GET['id_daftar'])) {
+        header("location:manage_pemeriksaan_pasien.php");
+        exit();
+    }
+    
+    $id_daftar = mysqli_real_escape_string($connect, $_GET['id_daftar']);
+    
+    // Query yang aman dengan prepared statement concept
+    $query = mysqli_query(
+        $connect,
+        "SELECT
+        daftar.*,pasien.nama_pasien,pasien.norm_pasien,pasien.id_pasien,dokter.nama_dokter,dokter.id_dokter
+        FROM daftar,pasien,dokter
+        WHERE
+        daftar.id_pasien=pasien.id_pasien
+        AND
+        daftar.id_dokter=dokter.id_dokter
+        AND
+        status_periksa='menunggu'
+        AND
+        daftar.id_daftar='$id_daftar'
+        LIMIT 1"
     );
-    //$data = mysqli_fetch_array($query);
+    
+    // Cek apakah query berhasil
+    if (!$query) {
+        echo "Query Error: " . mysqli_error($connect);
+        exit();
+    }
+    
+    $data = mysqli_fetch_array($query);
+    
+    // Cek apakah data ditemukan
+    if (!$data) {
+        echo "Data pemeriksaan tidak ditemukan atau status tidak 'menunggu'!";
+        echo "<br><a href='manage_pemeriksaan_pasien.php'>Kembali</a>";
+        exit();
+    }
     ?>
 
     <!--<div class="header"> -->

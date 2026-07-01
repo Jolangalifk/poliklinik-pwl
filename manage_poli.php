@@ -51,7 +51,7 @@
 		</p>
 		</p>
 		<div class="logout-button">
-			<a href="logout.php">
+			<a href="index.php">
 				<b> Logout </b>
 			</a>
 		</div>
@@ -74,9 +74,9 @@
 		<h4 style="margin-bottom: 25px; font-size: 20px; color: #1E3A8A;"><a href="tambah_poli.php" style="background-color: #1E3A8A; color: white; padding: 10px 20px; border-radius: 6px; text-decoration: none; display: inline-block; font-weight: 600; transition: all 0.3s;">+ Tambah Data Poli</a></h4>
 		<table width="100%" style="padding: 15px; box-shadow: 0 2px 8px rgba(30, 58, 138, 0.1); border-radius: 8px; overflow: hidden;">
 			<tr style="background-color: #1E3A8A; color: white; font-family: 'Poppins', sans-serif; font-weight: 600;">
-				<th width="10%">ID Poli</th>
-				<th width="60%">Nama Poli</th>
-				<th width="30%">Aksi</th>
+				<th width="10%" style="text-align: center;">ID Poli</th>
+				<th width="45%" style="text-align: center;">Nama Poli</th>
+				<th width="45%" style="text-align: center;">Aksi</th>
 			</tr>
 
 
@@ -85,7 +85,7 @@
 			$query = mysqli_query($connect, "select * from poli");
 			while ($data = mysqli_fetch_array($query)) {
 			?>
-				<tr style="background-color: white; color: #1E3A8A; font-family: 'Poppins', sans-serif;">
+				<tr style="background-color: white; color: #1E3A8A; font-family: 'Poppins', sans-serif; text-align: center;">
 					<td width="10%">
 						<?php echo $data['id_poli']; ?>
 					</td>

@@ -52,7 +52,7 @@
         <div class="logout-button">
             <a href="index.php"> 
                 <b> Logout </b>
-            </a>
+            </a>	
         </div>
     </div>
 	    <div class="horizontal-menu">
@@ -64,7 +64,7 @@
         <ul>
             <li><a href="login.php">Home</a></li>
             <li><a href="manage_dokter.php">Update</a></li>
-			<li><a href="manage_pemeriksaan_dokter.php">Pemeriksaan</a></li>
+			<li><a href="manage_pemeriksaan_dokter.php">Periksa</a></li>
         </ul>
     </div>
 </body>

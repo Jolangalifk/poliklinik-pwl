@@ -87,19 +87,60 @@
 
 
     <?php
-		include "koneksi.php";
-		$id_daftar=$_GET['id_daftar'];
-		$id_rekam_medis=$_GET['id_rekam_medis'];
-		$data=mysqli_fetch_array(
-		mysqli_query($connect,"SELECT rekam_medis., daftar., pasien.norm_pasien, pasien.nama_pasien, dokter.nama_dokter, poli.nama_poli
-					FROM rekam_medis, daftar, pasien, dokter, poli
-					WHERE rekam_medis.id_daftar = daftar.id_daftar
-					AND rekam_medis.id_pasien = pasien.id_pasien
-					AND rekam_medis.id_dokter = dokter.id_dokter
-					AND dokter.id_poli = poli.id_poli"			
-		)
-	);
-	//$data = mysqli_fetch_array($query);
+	include "koneksi.php";
+	
+	// Validasi dan ambil parameter
+	if (!isset($_GET['id_daftar']) || empty($_GET['id_daftar'])) {
+		header("location:manage_pemeriksaan_dokter.php");
+		exit();
+	}
+	
+	$id_daftar = mysqli_real_escape_string($connect, $_GET['id_daftar']);
+	
+	// Query dimulai dari daftar, LEFT JOIN ke tabel lain
+	// sehingga form tetap muncul meskipun rekam_medis belum ada
+	$query = mysqli_query($connect, "
+        SELECT 
+            rekam_medis.id_rekam_medis,
+            daftar.id_daftar,
+            daftar.id_pasien,
+            daftar.id_dokter,
+            daftar.nomor_antrian,
+            daftar.tanggal_periksa,
+            pasien.norm_pasien,
+            pasien.nama_pasien,
+            dokter.nama_dokter,
+            poli.nama_poli,
+            rekam_medis.tekanan_darah,
+            rekam_medis.tinggi_badan,
+            rekam_medis.berat_badan,
+            rekam_medis.keluhan,
+            rekam_medis.hasil_diagnosa,
+            rekam_medis.tindakan
+        FROM daftar
+        LEFT JOIN pasien  ON daftar.id_pasien  = pasien.id_pasien
+        LEFT JOIN dokter  ON daftar.id_dokter  = dokter.id_dokter
+        LEFT JOIN poli    ON dokter.id_poli    = poli.id_poli
+        LEFT JOIN rekam_medis ON rekam_medis.id_daftar = daftar.id_daftar
+        WHERE daftar.id_daftar = '$id_daftar'
+        LIMIT 1
+	");
+	
+	// Cek apakah query berhasil
+	if (!$query) {
+		echo "Query Error: " . mysqli_error($connect);
+		exit();
+	}
+	
+	$data = mysqli_fetch_array($query);
+	
+	// Cek apakah id_daftar ditemukan di tabel daftar
+	if (!$data) {
+		echo "Data daftar tidak ditemukan untuk id_daftar = $id_daftar";
+		echo "<br><a href='manage_pemeriksaan_dokter.php'>Kembali</a>";
+		exit();
+	}
+
 	?>
 
     <!--<div class="header"> -->
@@ -112,13 +153,14 @@
     <!--<div class="container"> -->
     <div style="margin-top:10px;margin-left:250px">
         <form
-            action="save_pemeriksaan_admin.php"
+            action="save_pemeriksaan_dokter.php"
             method="POST">
 
-            <input
-                type="hidden"
-                name="id_daftar"
-                value="<?php echo $data['id_daftar']; ?>" readonly>
+            <input type="hidden" name="id_daftar" value="<?php echo $data['id_daftar']; ?>">
+            <input type="hidden" name="id_rekam_medis" value="<?php echo $data['id_rekam_medis']; ?>">
+            <input type="hidden" name="id_pasien" value="<?php echo $data['id_pasien']; ?>">
+            <input type="hidden" name="id_dokter" value="<?php echo $data['id_dokter']; ?>">
+            <input type="hidden" name="tanggal_pemeriksaan" value="<?php echo date('Y-m-d H:i:s'); ?>">
 
             <!-- IDENTITAS -->
 
@@ -128,35 +170,23 @@
 
                     <div>
 
-                        <label>No Antrian</label>
+                        <label>Id Rekam Medis</label>
 
                         <input
                             type="text"
                             readonly
-                            value="<?php echo $data['nomor_antrian']; ?>" readonly>
+                            value="<?php echo $data['id_rekam_medis']; ?>" readonly>
 
                     </div>
 
                     <div>
 
-                        <label>No Rekam Medis</label>
+                        <label>No Daftar</label>
 
                         <input
                             type="text"
                             readonly
-                            value="<?php echo $data['norm_pasien']; ?>" readonly>
-
-                    </div>
-
-                    <div>
-
-                        <label>Id. Pasien</label>
-
-                        <input
-                            type="text"
-                            name="id_pasien"
-                            readonly
-                            value="<?php echo $data['id_pasien']; ?>" readonly>
+                            value="<?php echo $data['id_daftar']; ?>" readonly>
 
                     </div>
 
@@ -166,20 +196,9 @@
 
                         <input
                             type="text"
+                            name="nama_pasien"
                             readonly
                             value="<?php echo $data['nama_pasien']; ?>" readonly>
-
-                    </div>
-
-                    <div>
-
-                        <label>Id. Dokter</label>
-
-                        <input
-                            type="text"
-                            name="id_dokter"
-                            readonly
-                            value="<?php echo $data['id_dokter']; ?>" readonly>
 
                     </div>
 
@@ -193,6 +212,7 @@
                             value="<?php echo $data['nama_dokter']; ?>" readonly>
 
                     </div>
+
 
                     <div>
 
@@ -227,7 +247,10 @@
 
                         <input
                             type="text"
-                            name="tekanan_darah">
+                            name="tekanan_darah"
+                            readonly
+                            value="<?php echo $data['tekanan_darah']; ?>"
+                        >
 
                     </div>
 
@@ -237,7 +260,10 @@
 
                         <input
                             type="number"
-                            name="tinggi_badan">
+                            name="tinggi_badan"
+                            readonly
+                            value="<?php echo $data['tinggi_badan']; ?>">
+
 
                     </div>
 
@@ -247,7 +273,9 @@
 
                         <input
                             type="number"
-                            name="berat_badan">
+                            name="berat_badan"
+                            readonly
+                            value="<?php echo $data['berat_badan']; ?>">
 
                     </div>
 
@@ -255,7 +283,172 @@
 
             </div>
 
-            <div class="footer-action">
+            <!-- PEMERIKSAAN -->
+
+	<div class="card">
+
+		<div class="section-title">
+
+			Pemeriksaan
+
+		</div>
+
+		<label>Keluhan</label>
+
+		<textarea
+			name="keluhan"><?php echo isset($data['keluhan']) ? htmlspecialchars($data['keluhan']) : ''; ?></textarea>
+
+		<br><br>
+
+		<label>Diagnosa</label>
+
+		<textarea 
+			name="hasil_diagnosa"><?php echo isset($data['hasil_diagnosa']) ? htmlspecialchars($data['hasil_diagnosa']) : ''; ?></textarea>
+
+		<br><br>
+
+		<label>Tindakan</label>
+
+		<textarea
+			name="tindakan"><?php echo isset($data['tindakan']) ? htmlspecialchars($data['tindakan']) : ''; ?></textarea>
+
+	</div>
+
+
+	<!-- OBAT -->
+
+	<div class="card">
+
+		<div class="section-title">
+
+			Obat
+
+		</div>
+
+		<table class="table">
+
+		<tr>
+
+			<th>Kode</th>
+			<th>Obat</th>
+			<th>Stok</th>
+			<th>Satuan</th>
+			<th>Harga</th>
+			<th>Jumlah</th>
+
+		</tr>
+
+		<tr>
+
+		<td>
+			
+			<select name="id_obat" id="id_obat" onChange="ambilObat()">
+			
+				<option value="">
+					Pilih Obat
+				</option>
+
+				<?php
+
+					$obat = mysqli_query(
+							$connect,
+							"SELECT * FROM obat"
+							);
+
+					while($o=mysqli_fetch_array($obat))
+					{
+
+				?>
+
+				<option
+					value="<?php echo $o['id_obat']; ?>"
+    				data-nama="<?php echo $o['nama_obat']; ?>"
+    				data-stok="<?php echo $o['stok_obat']; ?>"
+    				data-satuan="<?php echo $o['satuan_obat']; ?>"
+    				data-harga="<?php echo $o['harga_obat']; ?>"
+				>
+
+					<?php echo $o['nama_obat']; ?>
+
+				</option>
+
+				<?php
+				}
+				?>
+				
+			</select>
+
+			</td>
+
+			<td>
+				<input type="text" id="nama_obat" readonly>
+			</td>
+			<td>
+				<input type="text" id="stok" readonly>
+			</td>
+			<td>
+				<input type="text" id="satuan" readonly>
+			</td>
+			<td>
+				<input type="text" id="harga" readonly>
+			</td>
+			<td>
+				<input type="number" name="jumlah" id="jumlah" onKeyUp="hitungTotal()" onChange="hitungTotal()">
+			</td>
+
+</tr>
+
+</table>
+
+<div style="margin-top:15px;">
+
+<label>Aturan Pakai</label>
+
+<input
+type="text"
+name="aturan_pakai">
+
+</div>
+
+<div class="total-box">
+
+	Total :
+
+	<span id="total_tampil">
+
+		Rp 0
+
+	</span>
+
+</div>
+
+</div>
+
+
+<div class="footer-action">
+
+<button
+type="submit"
+name="save"
+class="btn btn-save">
+
+Save
+
+</button>
+
+<a
+href="bayar.php?id_daftar=<?php echo $data['id_rekam_medis'];?>"
+class="btn btn-bayar">
+
+Bayar
+
+</a> 
+
+</div>
+
+</form>
+
+            <!-- <div class="footer-action">
 
                 <button
                     type="submit"
@@ -266,9 +459,60 @@
 
                 </button>
 
-            </div>
+            </div> -->
 
         </form>
+
+        <script>
+
+function ambilObat()
+{
+
+	let obat = document.getElementById('id_obat');
+	let selected = obat.options[obat.selectedIndex];
+	document.getElementById('nama_obat').value = selected.getAttribute('data-nama');
+	document.getElementById('stok').value = selected.getAttribute('data-stok');
+	document.getElementById('satuan').value = selected.getAttribute('data-satuan');
+	document.getElementById('harga').value = selected.getAttribute('data-harga');
+	hitungTotal();
+}
+//function hitungTotal()
+//{
+//	let harga = parseInt(document.getElementById('harga').value) || 0;
+//	let jumlah = parseInt(document.getElementById('jumlah').value) || 0;
+//	let total = harga*jumlah;
+//	document.getElementById('total_obat').value = total;
+//	document.getElementById('total_tampil').innerHTML = "Rp " +total.toLocaleString('id-ID');
+//}
+
+function hitungTotal()
+{
+
+let harga =
+parseInt(
+document.getElementById('harga').value
+) || 0;
+
+let jumlah =
+parseInt(
+document.getElementById('jumlah').value
+) || 0;
+
+console.log("Harga =", harga);
+console.log("Jumlah =", jumlah);
+
+let total = harga * jumlah;
+
+console.log("Total =", total);
+
+document.getElementById(
+'total_tampil'
+).innerHTML =
+"Rp " +
+total.toLocaleString('id-ID');
+
+}
+</script>
 
     </div>
 </body>

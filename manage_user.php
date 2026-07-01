@@ -73,22 +73,22 @@
 		<h4 style="margin-bottom: 25px; font-size: 20px; color: #1E3A8A;"><a href="tambah_user.php" style="background-color: #1E3A8A; color: white; padding: 10px 20px; border-radius: 6px; text-decoration: none; display: inline-block; font-weight: 600; transition: all 0.3s;">+ Tambah Data User</a></h4>
 		<table width="100%" style="padding: 15px; box-shadow: 0 2px 8px rgba(30, 58, 138, 0.1); border-radius: 8px; overflow: hidden;">
 			<tr style="background-color: #1E3A8A; color: white; font-family: 'Poppins', sans-serif; font-weight: 600;">
-				<th width="5%">
+				<th width="5%" style="text-align: center;">
 					Id User
 				</th>
-				<th width="20%">
+				<th width="20%" style="text-align: center;">
 					Nama User
 				</th>
-				<th width="20%">
+				<th width="20%" style="text-align: center;">
 					User Name
 				</th>
-				<th width="20%">
+				<th width="20%" style="text-align: center;">
 					Password
 				</th>
-				<th width="20%">
+				<th width="20%" style="text-align: center;">
 					Level
 				</th>
-				<th width="15%">
+				<th width="15%" style="text-align: center;">
 					Action
 				</th>
 			</tr>
@@ -100,26 +100,24 @@
 			while ($data = mysqli_fetch_array($query)) {
 			?>
 				<tr>
-					<td>
+					<td style="text-align: center;">
 						<?php echo $data['id']; ?>
 					</td>
-					<td>
+					<td style="text-align: center;">
 						<?php echo $data['nama']; ?>
 					</td>
-					<td>
+					<td style="text-align: center;">
 						<?php echo $data['username'] ?>
 					</td>
-					<td>
+					<td style="text-align: center;">
 						<?php echo $data['password']; ?>
 					</td>
-					<td>
+					<td style="text-align: center;">
 						<?php echo $data['level']; ?>
 					</td>
-					<td>
-						<?php
-						echo "<a href='edit_user.php?id=" . $data['id'] . " ' >Edit</a>";
-						echo "<a href='hapus_user.php?id=" . $data['id'] . "'>Hapus</a>";
-						?>
+					<td style="display: flex; flex-direction: row; gap: 10px;">
+						<a href="edit_user.php?id=<?= $data['id'] ?>" style="background-color: #1E3A8A; color: white; padding: 10px 20px; border-radius: 6px; text-decoration: none; display: inline-block; font-weight: 600; transition: all 0.3s; margin-right: 10px;">Edit</a>
+						<a href="hapus_user.php?id=<?= $data['id'] ?>" style="background-color: #DC2626; color: white; padding: 10px 20px; border-radius: 6px; text-decoration: none; display: inline-block; font-weight: 600; transition: all 0.3s;">Hapus</a>
 					</td>
 				</tr>
 			<?php
