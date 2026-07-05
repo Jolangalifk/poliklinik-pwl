@@ -15,7 +15,7 @@ $biaya_pemeriksaan = isset($_POST['biaya_pemeriksaan']) ? floatval($_POST['biaya
 $biaya_obat = isset($_POST['biaya_obat']) ? floatval($_POST['biaya_obat']) : 0;
 $total_bayar = $biaya_pemeriksaan + $biaya_obat;
 $metode_bayar = isset($_POST['metode_bayar']) ? mysqli_real_escape_string($connect, $_POST['metode_bayar']) : 'Tunai';
-$status_bayar = isset($_POST['status_bayar']) ? mysqli_real_escape_string($connect, $_POST['status_bayar']) : 'Belum Bayar';
+$status_bayar = 'Lunas';
 
 global $connect;
 

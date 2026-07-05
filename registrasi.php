@@ -15,7 +15,7 @@
 	?>
  
 	<div class="kotak_login">
-		<p class="tulisan_login">Registrasi User</p>
+		<p class="tulisan_login">Registrasi User</p> 
  
 		<form action="save_login.php" method="post">
 			<label>Nama</label>

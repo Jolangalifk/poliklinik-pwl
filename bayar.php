@@ -179,8 +179,8 @@ if (!empty($id_rekam_medis)) {
                         <select name="metode_bayar" required>
                             <option value="Tunai">Tunai</option>
                             <option value="Transfer">Transfer</option>
-                            <option value="Debit">Debit</option>
-                            <option value="Kartu Kredit">Kartu Kredit</option>
+                            <option value="BPJS">BPJS</option>
+                            <option value="QRIS">QRIS</option>
                         </select>
                     </div>
                     <div class="bayar-action">

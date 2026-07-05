@@ -65,10 +65,10 @@
 		<ul>
 			<li><a href="halaman_admin.php">Home</a></li>
 			<li><a href="manage_user.php">User</a></li>
+			<li><a href="manage_pasien.php">Pasien</a></li>
 			<li><a href="manage_dokter.php">Dokter</a></li>
 			<li><a href="manage_poli.php">Poli</a></li>
 			<li><a href="manage_obat.php">Obat</a></li>
-			<!-- <li><a href="manage_pasien.php">Pasien</a></li> -->
 			<li><a href="manage_pemeriksaan_pasien.php">Antrian</a></li>
 		</ul>
 	</div>
