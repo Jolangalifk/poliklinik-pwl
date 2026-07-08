@@ -20,7 +20,7 @@
 	<h1>Halaman Admin</h1>
 
 	<p>Halo <b><?php echo $_SESSION['username']; ?></b> Anda telah login sebagai <b><?php echo $_SESSION['level']; ?></b>.</p>
-	<a href="logout.php">LOGOUT</a>
+	<a href="index.php">LOGOUT</a>
 
 	<br/>
 	<br/>
@@ -58,7 +58,7 @@
         </p>
 				
         <div class="logout-button">
-            <a href="logout.php"> 
+            <a href="index.php"> 
                 <b> Logout </b>            </a>        </div>
     </div>
 	    <div class="horizontal-menu">

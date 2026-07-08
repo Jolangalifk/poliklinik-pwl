@@ -52,7 +52,7 @@
         </p>
 
         <div class="logout-button">
-            <a href="logout.php">
+            <a href="index.php">
                 <b> Logout </b>
             </a>
         </div>

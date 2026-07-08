@@ -52,7 +52,7 @@
 		</p>
 		<!-- <p>Jolang Alif Khan - A12.2024.07239</p> -->
 		<div class="logout-button">
-			<a href="logout.php">
+			<a href="index.php">
 				<b> Logout </b>
 			</a>
 		</div>
