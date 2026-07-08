@@ -437,7 +437,7 @@ Save
 </button>
 
 <a
-href="bayar.php?id_daftar=<?php echo $data['id_rekam_medis'];?>"
+href="bayar.php?id_daftar=<?php echo $data['id_daftar'];?>"
 class="btn btn-bayar">
 
 Bayar

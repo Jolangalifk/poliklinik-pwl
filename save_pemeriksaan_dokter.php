@@ -56,14 +56,6 @@
 			SET stok_obat = stok_obat - '$jumlah'
 			WHERE id_obat = '$id_obat'"
 		);
-
-		// Update status periksa
-		mysqli_query(
-			$connect,
-			"UPDATE daftar
-			 SET status_periksa='selesai'
-			 WHERE id_daftar='$id_daftar'"
-		);
 	}
 
 	if ($result) {
